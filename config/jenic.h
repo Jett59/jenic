@@ -1,0 +1,7 @@
+#ifndef __JENIC_CONFIG_H
+#define __JENIC_CONFIG_H
+
+#define JENIC_MAJOR_VERSION @Jenic_VERSION_MAJOR@
+#define JENIC_MINOR_VERSION @Jenic_VERSION_MINOR@
+
+#endif
