@@ -10,5 +10,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 #Project config file
 configure_file(config/jenic.h jenic_config.h)
 
+#Include directory
+set(CMAKE_CXX_FLAGS 
+"-I \"${PROJECT_SOURCE_DIR}/include\""
+)
+
 add_subdirectory(lib)
 add_subdirectory(tools)
