@@ -1,6 +1,5 @@
 #include "jenic/lexer/lexer.h"
 
-namespace jenic {
     jenic::Lexer::Lexer(std::string str) {
         input = str;
     }
@@ -8,5 +7,3 @@ namespace jenic {
         std::vector<jenic::Token> result;
         return result;
     }
-
-}
