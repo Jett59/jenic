@@ -1,9 +1,67 @@
 #include "jenic/lexer/lexer.h"
+#include <iostream>
 
     jenic::Lexer::Lexer(std::string str) {
         input = str;
     }
     std::vector<jenic::Token> jenic::Lexer::next() {
         std::vector<jenic::Token> result;
+        jenic::Token* token = new jenic::Token;
+        for (int i = 0; i < input.length(); i ++) {
+            char c = input [i];
+            if (token->type == jenic::TOKEN_STRING) {
+                if (c == '\\') {
+                    i ++;
+continue;
+                }
+                if (IS_STRING(c)) {
+result.push_back(*token);
+delete token;
+token = new jenic::Token;
+continue;
+                }else {
+token->value += c;
+                }
+            }else if (token->type != jenic::TOKEN_NULL) {
+                if (c == ' ' || c == '\n' || c == '\t'
+                || ((token->type == jenic::TOKEN_STRUCTURE) != (IS_STRUCTURE(c)))
+                || ((token->type == jenic::TOKEN_OPERATOR) != (IS_OPERATOR(c)))
+                || IS_STRING(c)) {
+                    result.push_back(*token);
+                    delete token;
+                    token = new jenic::Token;
+                }else {
+                    token->value += c;
+                }
+            }else {
+                if (IS_IDENTIFIER(c)) {
+                    token->type = jenic::TOKEN_IDENTIFIER;
+                    token->value += c;
+                }else if (IS_NUMBER(c)) {
+                    token->type = jenic::TOKEN_NUMBER;
+                    token->value += c;
+                }else if (IS_STRING(c)) {
+                    token->type = jenic::TOKEN_STRING;
+                }else if(IS_STRUCTURE(c)) {
+                    token->type = jenic::TOKEN_STRUCTURE;
+                    token->value += c;
+                }else if (IS_OPERATOR(c)) {
+                    token->type= jenic::TOKEN_OPERATOR;
+                    token->value += c;
+                }else {
+                    std::cerr << "Error: Unknown token " << c << std::endl;
+                    break;
+                }
+            }
+        }
+        if (token->type != jenic::TOKEN_NULL) {
+if (token->type == jenic::TOKEN_STRING) {
+    std::cerr << "Error: Expected string terminator (\"/')" << std::endl;
+}
+result.push_back (*token);
+delete token;
+        }else {
+            delete token;
+        }
         return result;
     }

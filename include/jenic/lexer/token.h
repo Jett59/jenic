@@ -6,6 +6,7 @@
 
 namespace jenic {
     enum TokenType {
+        TOKEN_NULL,
 TOKEN_IDENTIFIER,
 TOKEN_NUMBER,
 TOKEN_STRING,
