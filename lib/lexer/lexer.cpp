@@ -4,7 +4,7 @@
     jenic::Lexer::Lexer(std::string str) {
         input = str;
     }
-    std::vector<jenic::Token> jenic::Lexer::next() {
+    std::vector<jenic::Token> jenic::Lexer::lex() {
         std::vector<jenic::Token> result;
         jenic::Token* token = new jenic::Token;
         token->type = jenic::TOKEN_NULL;

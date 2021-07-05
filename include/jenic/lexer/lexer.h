@@ -11,7 +11,7 @@ namespace jenic {
         std::string input;
 public:
 Lexer(std::string str);
-std::vector<jenic::Token> next();
+std::vector<jenic::Token> lex();
     };
 }
 
