@@ -26,7 +26,7 @@ token->value += c;
                 }
             }else if (token->type != jenic::TOKEN_NULL) {
                 if (c == ' ' || c == '\n' || c == '\t'
-                || ((token->type == jenic::TOKEN_STRUCTURE) != (IS_STRUCTURE(c)))
+                || IS_STRUCTURE(c)
                 || ((token->type == jenic::TOKEN_OPERATOR) != (IS_OPERATOR(c)))
                 || IS_STRING(c)) {
                     result.push_back(*token);
