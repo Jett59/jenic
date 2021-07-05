@@ -7,6 +7,7 @@
     std::vector<jenic::Token> jenic::Lexer::next() {
         std::vector<jenic::Token> result;
         jenic::Token* token = new jenic::Token;
+        token->type = jenic::TOKEN_NULL;
         for (int i = 0; i < input.length(); i ++) {
             char c = input [i];
             if (token->type == jenic::TOKEN_STRING) {
@@ -18,6 +19,7 @@ continue;
 result.push_back(*token);
 delete token;
 token = new jenic::Token;
+token->type = jenic::TOKEN_NULL;
 continue;
                 }else {
 token->value += c;
@@ -30,11 +32,15 @@ token->value += c;
                     result.push_back(*token);
                     delete token;
                     token = new jenic::Token;
+                    token->type = jenic::TOKEN_NULL;
                 }else {
                     token->value += c;
                 }
-            }else {
-                if (IS_IDENTIFIER(c)) {
+            }
+            if (token->type == jenic::TOKEN_NULL) {
+                if (c == ' ' || c == '\t' || c == '\n' || c == '\r') {
+                    continue;
+                }else if (IS_IDENTIFIER(c)) {
                     token->type = jenic::TOKEN_IDENTIFIER;
                     token->value += c;
                 }else if (IS_NUMBER(c)) {

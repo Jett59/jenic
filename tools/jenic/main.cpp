@@ -10,6 +10,7 @@ std::cout << "Compiling text from stdin: " << line << std::endl;
 jenic::Lexer lexer(line);
 std::vector<jenic::Token> first = lexer.next();
 for (int i = 0; i < first.size(); i ++) {
-    std::cout << first [i].value << " ";
+    jenic::Token token = first [i];
+    std::cout << token.type << " " << token.value << std::endl;
 }
 }
