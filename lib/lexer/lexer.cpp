@@ -51,6 +51,10 @@ token->value += c;
                 }else if(IS_STRUCTURE(c)) {
                     token->type = jenic::TOKEN_STRUCTURE;
                     token->value += c;
+                    result.push_back(*token);
+                    delete token;
+                    token = new jenic::Token;
+                    token->type = jenic::TOKEN_NULL;
                 }else if (IS_OPERATOR(c)) {
                     token->type= jenic::TOKEN_OPERATOR;
                     token->value += c;
