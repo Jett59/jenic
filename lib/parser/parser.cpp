@@ -1,4 +1,5 @@
 #include "jenic/parser/parser.h"
+#include "jenic/parser/syntax/type.h"
 
 jenic::Parser::Parser(std::vector<jenic::Token> tokens) {
     this->tokens = tokens;
