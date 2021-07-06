@@ -12,6 +12,8 @@
             char c = input [i];
             if (token->type == jenic::TOKEN_STRING) {
                 if (c == '\\') {
+                    token->value += c;
+                    token->value += input [i + 1];
                     i ++;
 continue;
                 }
