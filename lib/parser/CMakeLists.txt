@@ -1,1 +1,2 @@
-add_library(Parser STATIC parser.cpp)
+add_library(Parser STATIC parser.cpp syntax/function.cpp)
+    
