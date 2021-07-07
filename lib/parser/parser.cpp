@@ -6,9 +6,15 @@
 jenic::Parser::Parser(std::vector<jenic::Token> tokens) {
     this->tokens = tokens;
 }
+
 jenic::AbstractSyntaxTree jenic::Parser::parse() {
+    int index = 0;
+    return parse(&index);
+}
+
+jenic::AbstractSyntaxTree jenic::Parser::parse(int * index) {
     jenic::AbstractSyntaxTree tree;
-    int i = 0;
+    int i = * index;
     for (; i < tokens.size(); i ++) {
         jenic::syntax::StatementType statementType = jenic::syntax::getType(tokens, i);
         switch (statementType) {
@@ -17,8 +23,10 @@ jenic::AbstractSyntaxTree jenic::Parser::parse() {
             break;
             default:
             std::cerr << "Error: unknown statement at index " << i << std::endl;
+            * index = i;
             return tree;
         }
     }
+    * index = i;
     return tree;
 }
