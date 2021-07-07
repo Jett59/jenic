@@ -34,6 +34,6 @@ jenic::AbstractSyntaxNode* jenic::Parser::parseFunction(int * index) {
         args.push_back(arg);
         i += 3;
     }
-    * index = i;
+    * index = i + 1;
     return new jenic::syntax::Function(return_type, name, args);
 }
