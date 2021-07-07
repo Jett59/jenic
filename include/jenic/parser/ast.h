@@ -9,7 +9,7 @@ namespace jenic {
 public:
 virtual std::string toString() = 0;
     };
-    typedef std::vector<jenic::AbstractSyntaxNode> AbstractSyntaxTree;
+    typedef std::vector<jenic::AbstractSyntaxNode*> AbstractSyntaxTree;
 }
 
 #endif
