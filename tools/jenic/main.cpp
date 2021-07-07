@@ -13,6 +13,7 @@ int main (int argc, char* argv []) {
     jenic::AbstractSyntaxTree tree = parser.parse();
     for (int i = 0; i < tree.size(); i ++) {
         std::cout << tree [i]->toString() << std::endl;
+        delete tree [i];
     }
 return 0;
 }
