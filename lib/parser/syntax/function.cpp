@@ -25,6 +25,10 @@ jenic::AbstractSyntaxNode* jenic::Parser::parseFunction(int * index) {
     i += 2;
     while (tokens [i].value != ")") {
         jenic::Token type = tokens [ i + 1];
+        if (type.value == ")") {
+            i++;
+            break;
+        }
         jenic::Token name = tokens [i + 2];
         if (type.type != jenic::TOKEN_IDENTIFIER || name.type != TOKEN_IDENTIFIER) {
             std::cerr << "Error: unexpected token " << type.value << " " << name.value << "at index " << i << std::endl;
