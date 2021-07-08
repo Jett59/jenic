@@ -16,6 +16,9 @@ jenic::syntax::StatementType jenic::syntax::getType(std::vector<jenic::Token> to
             } // tokens.size
         } // token1.type
         } // tokens.size
+        if (token0.value == "return") {
+            return jenic::syntax::StatementType::STATEMENT_RETURN;
+        } // token0 == return
     } // token0.type
     } // tokens.size
     std::cerr << "Error: unknown statement beginning at offset " << offset << std::endl;
