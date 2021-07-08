@@ -15,7 +15,15 @@ jenic::AbstractSyntaxTree jenic::Parser::parse() {
 jenic::AbstractSyntaxTree jenic::Parser::parse(int * index) {
     jenic::AbstractSyntaxTree tree;
     int i = * index;
+    bool isBlock = false;
+    if (tokens [i].value == "{") {
+        isBlock = true;
+        i ++;
+    }
     for (; i < tokens.size(); i ++) {
+        if (isBlock && tokens [i].value == "}") {
+            break;
+        }
         jenic::syntax::StatementType statementType = jenic::syntax::getType(tokens, i);
         switch (statementType) {
             case jenic::syntax::StatementType::STATEMENT_FUNCTION:
