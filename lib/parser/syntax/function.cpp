@@ -3,10 +3,11 @@
 
 #include <iostream>
 
-jenic::syntax::Function::Function(jenic::Token return_type, jenic::Token name, std::vector<std::pair<jenic::Token, jenic::Token>> args) {
+jenic::syntax::Function::Function(jenic::Token return_type, jenic::Token name, std::vector<std::pair<jenic::Token, jenic::Token>> args, jenic::AbstractSyntaxTree body) {
     this->return_type = return_type;
     this->name = name;
     this->args = args;
+    this->body = body;
 }
 std::string jenic::syntax::Function::toString() {
     std::string result = return_type.value + " " + name.value + "(";
@@ -14,7 +15,17 @@ std::string jenic::syntax::Function::toString() {
         std::pair<jenic::Token, jenic::Token> arg = args [i];
         result += arg.first.value + ": " + arg.second.value + ", ";
     }
-    return result + ")";
+    result += ")";
+    if (body.size() > 0) {
+        result += "{\n";
+        for (int i = 0; i < body.size(); i ++) {
+            result += body [i]->toString() + "\n";
+        }
+        result += "}";
+    }else {
+        result += ";";
+    }
+    return result;
 }
 
 jenic::AbstractSyntaxNode* jenic::Parser::parseFunction(int * index) {
@@ -38,6 +49,11 @@ jenic::AbstractSyntaxNode* jenic::Parser::parseFunction(int * index) {
         args.push_back(arg);
         i += 3;
     }
-    * index = i + 1;
-    return new jenic::syntax::Function(return_type, name, args);
+    i++;
+    jenic::AbstractSyntaxTree body;
+    if (tokens [i].value == "{") {
+        body = parse(&i);
+    }
+    * index = i;
+    return new jenic::syntax::Function(return_type, name, args, body);
 }
