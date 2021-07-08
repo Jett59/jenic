@@ -8,10 +8,8 @@ namespace jenic {
         class Return: public jenic::AbstractSyntaxNode {
             public:
             jenic::AbstractSyntaxNode* value;
-            Return(jenic::AbstractSyntaxNode value);
-            std::string toString() {
-                return "return " + value->toString() + ";";
-            }
+            Return(jenic::AbstractSyntaxNode* value);
+            std::string toString();
         };
     }
 }
