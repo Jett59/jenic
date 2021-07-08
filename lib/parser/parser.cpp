@@ -29,6 +29,9 @@ jenic::AbstractSyntaxTree jenic::Parser::parse(int * index) {
             case jenic::syntax::StatementType::STATEMENT_FUNCTION:
             tree.push_back(this->parseFunction(&i));
             break;
+            case jenic::syntax::StatementType::STATEMENT_RETURN:
+            tree.push_back(parseReturn(&i));
+            break;
             default:
             std::cerr << "Error: unknown statement at index " << i << std::endl;
             * index = i;
