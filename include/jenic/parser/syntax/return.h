@@ -9,6 +9,7 @@ namespace jenic {
             public:
             jenic::AbstractSyntaxNode* value;
             Return(jenic::AbstractSyntaxNode* value);
+            ~Return();
             std::string toString();
         };
     }

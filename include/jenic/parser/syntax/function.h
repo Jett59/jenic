@@ -16,6 +16,7 @@ namespace jenic {
             std::vector<std::pair<jenic::Token, jenic::Token>> args;
             jenic::AbstractSyntaxTree body;
             Function(jenic::Token return_type, jenic::Token name, std::vector<std::pair<jenic::Token, jenic::Token>> args, jenic::AbstractSyntaxTree body);
+            ~Function();
             std::string toString();
         };
     }

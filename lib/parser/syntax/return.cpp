@@ -4,6 +4,10 @@
 jenic::syntax::Return::Return(jenic::AbstractSyntaxNode* value) {
     this->value = value;
 }
+jenic::syntax::Return::~Return() {
+    delete value;
+}
+
 std::string jenic::syntax::Return::toString() {
     return "return " + value->toString() + ";";
 }

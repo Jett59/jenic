@@ -9,6 +9,12 @@ jenic::syntax::Function::Function(jenic::Token return_type, jenic::Token name, s
     this->args = args;
     this->body = body;
 }
+jenic::syntax::Function::~Function() {
+    for (int i = 0; i < body.size(); i ++) {
+        delete body [i];
+    }
+}
+
 std::string jenic::syntax::Function::toString() {
     std::string result = return_type.value + " " + name.value + "(";
     for (int i = 0; i < args.size(); i ++) {
