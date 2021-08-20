@@ -63,3 +63,7 @@ jenic::AbstractSyntaxNode* jenic::Parser::parseFunction(int * index) {
     * index = i;
     return new jenic::syntax::Function(return_type, name, args, body);
 }
+
+jenic::syntax::StatementType jenic::syntax::Function::getStatementType () {
+    return jenic::syntax::StatementType::STATEMENT_FUNCTION;
+}

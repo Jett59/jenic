@@ -10,7 +10,8 @@ namespace jenic {
         enum class StatementType {
             STATEMENT_NULL,
             STATEMENT_FUNCTION,
-            STATEMENT_RETURN
+            STATEMENT_RETURN,
+            STATEMENT_VALUE
         };
         jenic::syntax::StatementType getType (std::vector<jenic::Token> tokens, int offset);
     }

@@ -19,3 +19,7 @@ jenic::AbstractSyntaxNode* jenic::Parser::parseReturn(int* index) {
     * index = i;
     return new jenic::syntax::Return(value);
 }
+
+jenic::syntax::StatementType jenic::syntax::Return::getStatementType () {
+    return jenic::syntax::StatementType::STATEMENT_RETURN;
+}
