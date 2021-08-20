@@ -10,6 +10,7 @@ namespace jenic {
             public:
             jenic::Token value;
             Value(jenic::Token value);
+            jenic::syntax::StatementType getStatementType ();
             std::string toString();
         };
     }

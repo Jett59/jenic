@@ -18,3 +18,7 @@ jenic::AbstractSyntaxNode* jenic::Parser::parseExpression(int* index) {
     std::cerr << "Error: unknown expression at offset " << i << std::endl;
     return new jenic::syntax::Value({.type = jenic::TOKEN_NULL});
 }
+
+jenic::syntax::StatementType jenic::syntax::Value::getStatementType () {
+    return jenic::syntax::StatementType::STATEMENT_VALUE;
+}

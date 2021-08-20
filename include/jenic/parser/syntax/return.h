@@ -10,6 +10,7 @@ namespace jenic {
             jenic::AbstractSyntaxNode* value;
             Return(jenic::AbstractSyntaxNode* value);
             ~Return();
+            jenic::syntax::StatementType getStatementType ();
             std::string toString();
         };
     }
