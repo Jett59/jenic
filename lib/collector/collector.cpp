@@ -1,6 +1,7 @@
 #include "jenic/collector/collector.h"
 
 #include <iostream>
+#include <cstdlib>
 
 jenic::Collection* jenic::Collector::collect () {
     jenic::AbstractSyntaxTree variables;
@@ -14,7 +15,7 @@ jenic::Collection* jenic::Collector::collect () {
             break;
             default:
             std::cerr << "Only functions, variables and constants may appear at the root scope";
-            break;
+            std::exit(-1);
         }
     }
    return new jenic::Collection (variables, constants, functions);
