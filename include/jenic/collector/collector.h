@@ -9,10 +9,10 @@ namespace jenic {
         jenic::AbstractSyntaxTree variables;
         jenic::AbstractSyntaxTree constants;
         jenic::AbstractSyntaxTree functions;
-        Collection (jenic::AbstractSyntaxTree variables, jenic::AbstractSyntaxTree constants, jenic::AbstractSyntaxTree functions) {
-            this->variables = variables;
-            this->constants = constants;
-            this->functions = functions;
+        Collection (jenic::AbstractSyntaxTree variableTree, jenic::AbstractSyntaxTree constantTree, jenic::AbstractSyntaxTree functionTree) {
+            this->variables = variableTree;
+            this->constants = constantTree;
+            this->functions = functionTree;
         }
     };
     class Collector {
@@ -22,7 +22,7 @@ namespace jenic {
         Collector(jenic::AbstractSyntaxTree input) {
             this->input = input;
         }
-        jenic::Collection collect ();
+        jenic::Collection* collect ();
     };
 }
 
