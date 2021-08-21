@@ -18,7 +18,7 @@ namespace jenic {
             jenic::syntax::StatementType getStatementType () {
                 return jenic::syntax::StatementType::STATEMENT_REFERENCE;
             }
-        }
+        };
     }
 }
 
