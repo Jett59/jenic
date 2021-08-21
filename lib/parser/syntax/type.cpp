@@ -1,5 +1,6 @@
 #include "jenic/parser/syntax/type.h"
 #include <iostream>
+#include <cstdlib>
 
 jenic::syntax::StatementType jenic::syntax::getType(std::vector<jenic::Token> tokens, int offset) {
     if (tokens.size() > offset) {
@@ -22,5 +23,6 @@ jenic::syntax::StatementType jenic::syntax::getType(std::vector<jenic::Token> to
     } // token0.type
     } // tokens.size
     std::cerr << "Error: unknown statement beginning at offset " << offset << std::endl;
+    std::exit(-1);
     return jenic::syntax::StatementType::STATEMENT_NULL;
 }

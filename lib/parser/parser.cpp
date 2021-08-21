@@ -2,6 +2,7 @@
 #include "jenic/parser/syntax/type.h"
 
 #include <iostream>
+#include <cstdlib>
 
 jenic::Parser::Parser(std::vector<jenic::Token> tokens) {
     this->tokens = tokens;
@@ -34,8 +35,7 @@ jenic::AbstractSyntaxTree jenic::Parser::parse(int * index) {
             break;
             default:
             std::cerr << "Error: unknown statement at index " << i << std::endl;
-            * index = i;
-            return tree;
+            std::exit (-1);
         }
     }
     * index = i;
