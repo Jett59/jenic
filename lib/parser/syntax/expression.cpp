@@ -3,6 +3,7 @@
 #include "jenic/parser/syntax/reference.h"
 
 #include <iostream>
+#include <cstdlib>
 
 jenic::AbstractSyntaxNode* jenic::Parser::parseExpression(int* index) {
     int i = * index;
@@ -15,5 +16,6 @@ jenic::AbstractSyntaxNode* jenic::Parser::parseExpression(int* index) {
         return new jenic::syntax::Reference(tokens [i]);
     }
     std::cerr << "Error: unknown expression at offset " << i << std::endl;
-    return new jenic::syntax::Value({.type = jenic::TOKEN_NULL});
+    std::exit (-1);
+    return nullptr;
 }

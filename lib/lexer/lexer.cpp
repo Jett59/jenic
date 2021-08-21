@@ -1,5 +1,6 @@
 #include "jenic/lexer/lexer.h"
 #include <iostream>
+#include <cstdlib>
 
     jenic::Lexer::Lexer(std::string str) {
         input = str;
@@ -62,13 +63,14 @@ token->value += c;
                     token->value += c;
                 }else {
                     std::cerr << "Error: Unknown token " << c << std::endl;
-                    break;
+                    std::exit(-1);
                 }
             }
         }
         if (token->type != jenic::TOKEN_NULL) {
 if (token->type == jenic::TOKEN_STRING) {
     std::cerr << "Error: Expected string terminator (\"/')" << std::endl;
+    std::exit(-1);
 }
 result.push_back (*token);
 delete token;

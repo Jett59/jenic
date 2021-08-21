@@ -2,6 +2,7 @@
 #include "jenic/parser/parser.h"
 
 #include <iostream>
+#include <cstdlib>
 
 jenic::syntax::Function::Function(jenic::Token return_type, jenic::Token name, std::vector<std::pair<jenic::Token, jenic::Token>> args, jenic::AbstractSyntaxTree body) {
     this->return_type = return_type;
@@ -49,7 +50,7 @@ jenic::AbstractSyntaxNode* jenic::Parser::parseFunction(int * index) {
         jenic::Token name = tokens [i + 2];
         if (type.type != jenic::TOKEN_IDENTIFIER || name.type != TOKEN_IDENTIFIER) {
             std::cerr << "Error: unexpected token " << type.value << " " << name.value << "at index " << i << std::endl;
-            break;
+            std::exit(-1);
         }
         std::pair<jenic::Token, jenic::Token> arg(type, name);
         args.push_back(arg);
