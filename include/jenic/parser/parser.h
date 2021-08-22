@@ -7,14 +7,14 @@
 namespace jenic {
     class Parser {
         private:
-        std::vector<jenic::Token> tokens;
-        jenic::AbstractSyntaxNode* parseFunction(int * index);
-        jenic::AbstractSyntaxNode* parseReturn (int* index);
-        jenic::AbstractSyntaxNode* parseExpression (int* index);
-        jenic::AbstractSyntaxTree parse(int * index);
+            std::vector<jenic::Token> tokens;
+            jenic::AbstractSyntaxNode* parseFunction(int *index);
+            jenic::AbstractSyntaxNode* parseReturn(int *index);
+            jenic::AbstractSyntaxNode* parseExpression(int *index);
+            jenic::AbstractSyntaxTree parse(int *index);
         public:
-        Parser(std::vector<jenic::Token> tokens);
-        jenic::AbstractSyntaxTree parse();
+            Parser(std::vector<jenic::Token> tokens);
+            jenic::AbstractSyntaxTree parse();
     };
 }
 

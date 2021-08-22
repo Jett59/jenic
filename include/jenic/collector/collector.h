@@ -6,23 +6,25 @@
 namespace jenic {
     class Collection {
         public:
-        jenic::AbstractSyntaxTree variables;
-        jenic::AbstractSyntaxTree constants;
-        jenic::AbstractSyntaxTree functions;
-        Collection (jenic::AbstractSyntaxTree variableTree, jenic::AbstractSyntaxTree constantTree, jenic::AbstractSyntaxTree functionTree) {
-            this->variables = variableTree;
-            this->constants = constantTree;
-            this->functions = functionTree;
-        }
+            jenic::AbstractSyntaxTree variables;
+            jenic::AbstractSyntaxTree constants;
+            jenic::AbstractSyntaxTree functions;
+            Collection(jenic::AbstractSyntaxTree variableTree,
+                    jenic::AbstractSyntaxTree constantTree,
+                    jenic::AbstractSyntaxTree functionTree) {
+                this->variables = variableTree;
+                this->constants = constantTree;
+                this->functions = functionTree;
+            }
     };
     class Collector {
         private:
-        jenic::AbstractSyntaxTree input;
+            jenic::AbstractSyntaxTree input;
         public:
-        Collector(jenic::AbstractSyntaxTree input) {
-            this->input = input;
-        }
-        jenic::Collection* collect ();
+            Collector(jenic::AbstractSyntaxTree input) {
+                this->input = input;
+            }
+            jenic::Collection* collect();
     };
 }
 

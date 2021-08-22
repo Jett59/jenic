@@ -6,6 +6,6 @@ jenic::syntax::Value::Value(jenic::Token value) {
 std::string jenic::syntax::Value::toString() {
     return value.value;
 }
-jenic::syntax::StatementType jenic::syntax::Value::getStatementType () {
+jenic::syntax::StatementType jenic::syntax::Value::getStatementType() {
     return jenic::syntax::StatementType::STATEMENT_VALUE;
 }

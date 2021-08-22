@@ -7,10 +7,11 @@
 
 namespace jenic {
     class AbstractSyntaxNode {
-public:
-virtual ~AbstractSyntaxNode () {}
-virtual jenic::syntax::StatementType getStatementType () = 0;
-virtual std::string toString() = 0;
+        public:
+            virtual ~AbstractSyntaxNode() {
+            }
+            virtual jenic::syntax::StatementType getStatementType() = 0;
+            virtual std::string toString() = 0;
     };
     typedef std::vector<jenic::AbstractSyntaxNode*> AbstractSyntaxTree;
 }

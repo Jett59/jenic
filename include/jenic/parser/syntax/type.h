@@ -14,7 +14,8 @@ namespace jenic {
             STATEMENT_VALUE,
             STATEMENT_REFERENCE
         };
-        jenic::syntax::StatementType getType (std::vector<jenic::Token> tokens, int offset);
+        jenic::syntax::StatementType getType(std::vector<jenic::Token> tokens,
+                int offset);
     }
 }
 

@@ -13,31 +13,33 @@ jenic::AbstractSyntaxTree jenic::Parser::parse() {
     return parse(&index);
 }
 
-jenic::AbstractSyntaxTree jenic::Parser::parse(int * index) {
+jenic::AbstractSyntaxTree jenic::Parser::parse(int *index) {
     jenic::AbstractSyntaxTree tree;
-    int i = * index;
+    int i = *index;
     bool isBlock = false;
-    if (tokens [i].value == "{") {
+    if (tokens[i].value == "{") {
         isBlock = true;
-        i ++;
+        i++;
     }
-    for (; i < tokens.size(); i ++) {
-        if (isBlock && tokens [i].value == "}") {
+    for (; i < tokens.size(); i++) {
+        if (isBlock && tokens[i].value == "}") {
             break;
         }
-        jenic::syntax::StatementType statementType = jenic::syntax::getType(tokens, i);
+        jenic::syntax::StatementType statementType = jenic::syntax::getType(
+                tokens, i);
         switch (statementType) {
             case jenic::syntax::StatementType::STATEMENT_FUNCTION:
-            tree.push_back(this->parseFunction(&i));
-            break;
+                tree.push_back(this->parseFunction(&i));
+                break;
             case jenic::syntax::StatementType::STATEMENT_RETURN:
-            tree.push_back(parseReturn(&i));
-            break;
+                tree.push_back(parseReturn(&i));
+                break;
             default:
-            std::cerr << "Error: unknown statement at index " << i << std::endl;
-            std::exit (-1);
+                std::cerr << "Error: unknown statement at index " << i
+                        << std::endl;
+                std::exit(-1);
         }
     }
-    * index = i;
+    *index = i;
     return tree;
 }

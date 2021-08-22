@@ -7,11 +7,11 @@ namespace jenic {
     namespace syntax {
         class Return: public jenic::AbstractSyntaxNode {
             public:
-            jenic::AbstractSyntaxNode* value;
-            Return(jenic::AbstractSyntaxNode* value);
-            ~Return();
-            jenic::syntax::StatementType getStatementType ();
-            std::string toString();
+                jenic::AbstractSyntaxNode *value;
+                Return(jenic::AbstractSyntaxNode *value);
+                ~Return();
+                jenic::syntax::StatementType getStatementType();
+                std::string toString();
         };
     }
 }

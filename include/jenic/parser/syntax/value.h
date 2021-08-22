@@ -8,10 +8,10 @@ namespace jenic {
     namespace syntax {
         class Value: public jenic::AbstractSyntaxNode {
             public:
-            jenic::Token value;
-            Value(jenic::Token value);
-            jenic::syntax::StatementType getStatementType ();
-            std::string toString();
+                jenic::Token value;
+                Value(jenic::Token value);
+                jenic::syntax::StatementType getStatementType();
+                std::string toString();
         };
     }
 }
